@@ -8,6 +8,10 @@
 * make sure python is installed
 * install flask to pip
 
+### LogIn Details For 2 users
+   Username: Password
+1. Karen: karenpassword
+2. Jarvis: jarvispassword
 ## Video Demo:  <https://youtu.be/Uu9KiFMZaAU>
 #### Description:
 
