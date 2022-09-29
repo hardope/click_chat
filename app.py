@@ -1,56 +1,128 @@
 import sqlite3
-from flask import Flask, flash, redirect, render_template, request
+from flask import Flask, flash, redirect, render_template, request, session, jsonify
+import requests
 
 app = Flask(__name__)
+app.secret_key = "Messenger"
 
 
-username =""
-
-
-@app.route("/messages")
+@app.route("/users")
 def index():
-    conn = sqlite3.connect("messenger.db")
-    db = conn.cursor()
+    if 'messenger' not in session:
+        return redirect("/login")
+    elif session['messenger'] == "":
+        return redirect("/login")
+    else:
+        users = []
+        result = query_db("SELECT * FROM users")
+        for i in result:
+            if i[1] == session['messenger']:
+                continue
+            users.append(i[1])
+        return render_template("index.html", username=session['messenger'], users=users, header="USERS")
 
-    message = db.execute("SELECT * FROM messages ORDER BY time_date DESC LIMIT 5")
+@app.route("/")
+def chats():
+    if 'messenger' not in session:
+          return redirect("/login")
+    elif session['messenger'] == "":
+        return redirect("/login")
+    else:
+        users = []
+        result = query_db(f"SELECT DISTINCT recipient FROM messages WHERE sender == '{session['messenger']}'")
+        results = query_db(f"SELECT DISTINCT sender FROM messages WHERE recipient == '{session['messenger']}'")
+        for i in result:
+            users.append(i[0])
+        for i in results:
+            if i[0] not in users:
+                users.append(i[0])
+        return render_template("index.html", username=session['messenger'], users=users, header="Chats")
 
-    return render_template("index.html", message=message)
+@app.route("/chat/<query>")
+def chat(query):
+    if 'messenger' not in session:
+          return redirect("/login")
+    elif session['messenger'] == "":
+        return redirect("/login")
+    else:
+        messages = query_db(f"SELECT * FROM messages WHERE sender == '{session['messenger']}' AND recipient == '{query}' OR recipient == '{session['messenger']}' AND sender == '{query}'")
+        return render_template("chat.html", username=session['messenger'], messages=messages, recipient=query)
 
+@app.route("/api/<query>")
+def api(query):
+    if 'messenger' not in session:
+          return redirect("/login")
+    elif session['messenger'] == "":
+        return redirect("/login")
+    else:
+        if 'id-' in query:
+            query = query.replace('id-', '')
+            print(session['messenger'])
+            print(query)
+            length = query_db(f"SELECT COUNT(*) FROM messages WHERE sender == '{session['messenger']}' AND recipient == '{query}' OR recipient == '{session['messenger']}' AND sender == '{query}'")
+            return length
+        messages = query_db(f"SELECT * FROM messages WHERE sender == '{session['messenger']}' AND recipient == '{query}' OR recipient == '{session['messenger']}' AND sender == '{query}'")
+        return jsonify(messages)
 
-@app.route("/", methods=["GET", "POST"])
+@app.route("/login", methods=["GET", "POST"])
 def login():
 
-    conn = sqlite3.connect("messenger.db")
-    db = conn.cursor()
     if request.method == "POST":
-        username = request.form.get("username")
-        password = request.form.get("password")
+        username = request.form.get('username')
+        password = request.form.get('password')
 
-        if not username:
-            message = "You must input username"
-            return render_template("error.html", message=message)
+        users = query_db(f"SELECT * FROM users WHERE username == '{username}' AND password == '{password}'")
 
-        if not password:
-            message = "You must input password"
-            return render_template("error.html", message=message)
-
-        check = db.execute(f"SELECT * from users WHERE password == '{password}' AND username = '{username}'")
-
-        if not check:
-            message = "Invalid username or password"
-            return render_template("error.html", message=message)
-
-
-        return redirect("/messages")
-        print(user_name)
+        if len(users) < 1:
+            return redirect('/login')
+        else:
+            session['messenger'] = username
+            return redirect("/")
     else:
         return render_template("login.html")
 
-@app.route("/new" , methods=["POST"])
-def new():
-    conn = sqlite3.connect("messenger.db")
-    db = conn.cursor()
-    new = request.form.get("new")
-    db.execute(f"INSERT INTO messages(message) VALUES('{new}')")
-    conn.commit()
-    return redirect("/messages")
+@app.route("/register", methods=['POST', 'GET'])
+def register():
+    if request.method == "POST":
+        username = request.form.get('username')
+        password = request.form.get('password')
+        confirm = request.form.get('confirm')
+
+
+        if password == confirm:
+            pass
+        else:
+            return redirect("/")
+        users = query_db(f"SELECT * FROM users WHERE username == '{username}'")
+        if not users:
+            pass
+        else:
+            return redirect('/register')
+
+        available_id = query_db(f"SELECT id FROM users ORDER BY id DESC LIMIT 1")[0][0]
+
+        query_db(f"INSERT INTO users (id, username, password) VALUES ({int(available_id + 1)}, '{username}', '{password}')")
+        session['messenger'] = username
+        return redirect("/")
+    else:
+        return render_template("register.html")
+
+@app.route("/message/<query>", methods=['POST'])
+def message(query):
+    if 'messenger' not in session:
+        return redirect("/login")
+    elif session['messenger'] == "":
+        return redirect("/login")
+    else:
+        message = request.form.get('message')
+        query_db(f"INSERT INTO messages VALUES ('{session['messenger']}', '{query}', '{message}', CURRENT_TIMESTAMP)")
+        return redirect(f"/chat/{query}")
+
+
+def query_db(text):
+     conn = sqlite3.connect("messenger.db")
+     cursor = conn.cursor()
+     cursor.execute(f"{text}")
+     value = cursor.fetchall()
+     conn.commit()
+     return value
