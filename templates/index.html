@@ -11,5 +11,8 @@
     {% for user in users %}
         <form action="/chat/{{user}}"><button  type="submit" id='button' class="btn btn-outline-light" data-mdb-ripple-color="dark" style="color: black;">{{ user }}</button></form>
     {% endfor %}
+    <form action="/users">
+        <button value="New Message">New Message</button>
+    </form>
 
 {% endblock %}

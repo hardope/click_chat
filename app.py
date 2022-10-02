@@ -109,9 +109,17 @@ def message(query):
         return redirect("/login")
     else:
         message = request.form.get('message')
-        print(message)
         query_db(f"INSERT INTO messages VALUES ('{session['messenger']}', '{query}', '{message}', CURRENT_TIMESTAMP)")
         return redirect(f"/chat/{query}")
+
+@app.route("/messages/<query>", methods=['POST'])
+def messages(query):
+    if not session.get("messenger"):
+        return redirect("/login")
+    else:
+        recipient, message = query.split(':')
+        query_db(f"INSERT INTO messages VALUES ('{session['messenger']}', '{recipient}', '{message}', CURRENT_TIMESTAMP)")
+        return "Sent"
 
 @app.route("/logout", methods=['POST', 'GET'])
 def logout():
