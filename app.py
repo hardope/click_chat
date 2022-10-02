@@ -9,7 +9,21 @@ app.config["SESSION_TYPE"] = "filesystem"
 Session(app)
 app.secret_key = "Messenger"
 
+@app.route("/search")
+def search():
+    if not session.get("messenger"):
+        return redirect("/login")
+    else:
+        search = request.form.get("search")
+        print(search)
 
+        users = []
+        result = query_db(f"SELECT * FROM users WHERE username LIKE '%{search}%'")
+        for i in result:
+            if i[1] == session['messenger']:
+                continue
+            users.append(i[1])
+        return render_template("index.html", username=session['messenger'], users=users, header="USERS")
 @app.route("/users")
 def index():
     if not session.get("messenger"):
@@ -43,8 +57,7 @@ def chat(query):
     if not session.get("messenger"):
         return redirect("/login")
     else:
-        messages = query_db(f"SELECT * FROM messages WHERE sender == '{session['messenger']}' AND recipient == '{query}' OR recipient == '{session['messenger']}' AND sender == '{query}'")
-        return render_template("chat.html", username=session['messenger'], messages=messages, recipient=query)
+        return render_template("chat.html", username=session['messenger'], recipient=query)
 
 @app.route("/api/<query>")
 def api(query):
@@ -64,36 +77,38 @@ def api(query):
 def login():
 
     if request.method == "POST":
-        username = request.form.get('username')
-        password = request.form.get('password')
+        username = request.form.get('username').strip()
+        password = request.form.get('password').strip()
 
-        users = query_db(f"SELECT * FROM users WHERE username == '{username}' AND password == '{password}'")
-
+        try:
+            users = query_db(f"SELECT * FROM users WHERE username == '{username}' AND password == '{password}'")
+        except:
+            return render_template("login.html", error="Invalid Username Or Password")
         if len(users) < 1:
-            return redirect('/login')
+            return render_template("login.html", error="Invalid Username Or Password")
         else:
             session['messenger'] = username
             return redirect("/")
     else:
-        return render_template("login.html")
+        return render_template("login.html", error="")
 
 @app.route("/register", methods=['POST', 'GET'])
 def register():
     if request.method == "POST":
-        username = request.form.get('username')
-        password = request.form.get('password')
-        confirm = request.form.get('confirm')
+        username = request.form.get('username').strip()
+        password = request.form.get('password').strip()
+        confirm = request.form.get('confirm').strip()
 
 
         if password == confirm:
             pass
         else:
-            return redirect("/")
+            return render_template("register.html", error="Password does not match confirmation")
         users = query_db(f"SELECT * FROM users WHERE username == '{username}'")
         if not users:
             pass
         else:
-            return redirect('/register')
+            return render_template("register.html", error="Username Unavailable")
 
         available_id = query_db(f"SELECT id FROM users ORDER BY id DESC LIMIT 1")[0][0]
 
@@ -101,23 +116,14 @@ def register():
         session['messenger'] = username
         return redirect("/")
     else:
-        return render_template("register.html")
-
-@app.route("/message/<query>", methods=['POST'])
-def message(query):
-    if not session.get("messenger"):
-        return redirect("/login")
-    else:
-        message = request.form.get('message')
-        query_db(f"INSERT INTO messages VALUES ('{session['messenger']}', '{query}', '{message}', CURRENT_TIMESTAMP)")
-        return redirect(f"/chat/{query}")
+        return render_template("register.html", error="")
 
 @app.route("/messages/<query>", methods=['POST'])
 def messages(query):
     if not session.get("messenger"):
         return redirect("/login")
     else:
-        recipient, message = query.split(':')
+        recipient, message = query.strip().split(':')
         query_db(f"INSERT INTO messages VALUES ('{session['messenger']}', '{recipient}', '{message}', CURRENT_TIMESTAMP)")
         return "Sent"
 
