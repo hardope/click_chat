@@ -1,16 +1,18 @@
 import sqlite3
 from flask import Flask, flash, redirect, render_template, request, session, jsonify
+from flask_session import Session
 import requests
 
 app = Flask(__name__)
+app.config["SESSION_PERMANENT"] = False
+app.config["SESSION_TYPE"] = "filesystem"
+Session(app)
 app.secret_key = "Messenger"
 
 
 @app.route("/users")
 def index():
-    if 'messenger' not in session:
-        return redirect("/login")
-    elif session['messenger'] == "":
+    if not session.get("messenger"):
         return redirect("/login")
     else:
         users = []
@@ -23,9 +25,7 @@ def index():
 
 @app.route("/")
 def chats():
-    if 'messenger' not in session:
-          return redirect("/login")
-    elif session['messenger'] == "":
+    if not session.get("messenger"):
         return redirect("/login")
     else:
         users = []
@@ -40,9 +40,7 @@ def chats():
 
 @app.route("/chat/<query>")
 def chat(query):
-    if 'messenger' not in session:
-          return redirect("/login")
-    elif session['messenger'] == "":
+    if not session.get("messenger"):
         return redirect("/login")
     else:
         messages = query_db(f"SELECT * FROM messages WHERE sender == '{session['messenger']}' AND recipient == '{query}' OR recipient == '{session['messenger']}' AND sender == '{query}'")
@@ -50,9 +48,7 @@ def chat(query):
 
 @app.route("/api/<query>")
 def api(query):
-    if 'messenger' not in session:
-          return redirect("/login")
-    elif session['messenger'] == "":
+    if not session.get("messenger"):
         return redirect("/login")
     else:
         if 'id-' in query:
@@ -109,15 +105,18 @@ def register():
 
 @app.route("/message/<query>", methods=['POST'])
 def message(query):
-    if 'messenger' not in session:
-        return redirect("/login")
-    elif session['messenger'] == "":
+    if not session.get("messenger"):
         return redirect("/login")
     else:
         message = request.form.get('message')
+        print(message)
         query_db(f"INSERT INTO messages VALUES ('{session['messenger']}', '{query}', '{message}', CURRENT_TIMESTAMP)")
         return redirect(f"/chat/{query}")
 
+@app.route("/logout", methods=['POST', 'GET'])
+def logout():
+    session['messenger'] = None
+    return redirect('/login')
 
 def query_db(text):
      conn = sqlite3.connect("messenger.db")

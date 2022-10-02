@@ -10,9 +10,11 @@
             let username = "{{username}}"
             var list;
             var newlist;
+            let url = window.location.origin
+            console.log(window.location.origin)
 
             let request = new XMLHttpRequest();
-            request.open("GET", "http://localhost:5000/api/{{recipient}}");
+            request.open("GET", url + "/api/{{recipient}}");
             request.send();
             request.onload = () => {
                 if (request.status === 200) {
@@ -42,7 +44,7 @@
             }
             function refresh() {
                 let request = new XMLHttpRequest();
-                request.open("GET", "http://localhost:5000/api/{{recipient}}");
+                request.open("GET", url + "/api/{{recipient}}");
                 request.send();
                 request.onload = () => {
                     if (request.status === 200) {
@@ -77,3 +79,4 @@
         </div>
     </form>
 {% endblock %}
+
