@@ -14,23 +14,23 @@ document.addEventListener('DOMContentLoaded', function(){
              list = JSON.parse(request.response);
              newlist = list;
              for (let obj of JSON.parse(request.response)) {
-                 if (obj[0] === username ) {
-                     var tag = document.createElement('h5');
-                     tag.textContent = obj[2];
-                     tag.setAttribute('style', 'text-indent: 85%;')
-                     body.appendChild(tag);
-                     var date = document.createElement('p');
-                     date.textContent = obj[3];
-                     date.setAttribute('style', 'text-indent: 85%;')
-                     body.appendChild(date);
-                 } else {
-                     var tag = document.createElement('h5');
-                     tag.textContent = obj[2];
-                     body.appendChild(tag);
-                     var date = document.createElement('p');
-                     date.textContent = obj[3];
-                     body.appendChild(date);
-                 }
+                    if (obj[0] === username ) {
+                         var tag = document.createElement('h5');
+                         tag.textContent = obj[2];
+                         tag.setAttribute('style', 'text-indent: 85%;')
+                         body.appendChild(tag);
+                         var date = document.createElement('p');
+                         date.textContent = obj[3];
+                         date.setAttribute('style', 'text-indent: 85%;')
+                         body.appendChild(date);
+                    } else {
+                         var tag = document.createElement('h5');
+                         tag.textContent = obj[2];
+                         body.appendChild(tag);
+                         var date = document.createElement('p');
+                         date.textContent = obj[3];
+                         body.appendChild(date);
+                    }
              }
          }
      }
@@ -71,25 +71,25 @@ document.addEventListener('DOMContentLoaded', function(){
      document.querySelector('#submit').disabled = true;
 
      document.querySelector('#message').onkeyup = () => {
-             if (document.querySelector('#message').value.length > 0){
-                 document.querySelector('#submit').disabled = false;
-             }
-             else {
-                 document.querySelector('#submit').disabled = true;
-             }
+          if (document.querySelector('#message').value.length > 0){
+               document.querySelector('#submit').disabled = false;
+          }
+          else {
+               document.querySelector('#submit').disabled = true;
+          }
      }
      document.querySelector('#form').onsubmit = () => {
-             let message = document.querySelector('#message').value;
-             let newmessage = new XMLHttpRequest();
-             newmessage.open("POST", url + "/messages/{{recipient}}:" + message);
-             newmessage.send();
-             request.onload = () => {
-                 if (request.status !== 200) {
-                     alert("You Are Disconnected...")
-                 }
-             }
-             document.querySelector('#message').value = '';
-             document.querySelector('#submit').disabled = true;
-             return false
+          let message = document.querySelector('#message').value;
+          let newmessage = new XMLHttpRequest();
+          newmessage.open("POST", url + "/messages/{{recipient}}:" + message);
+          newmessage.send();
+          request.onload = () => {
+               if (request.status !== 200) {
+                    alert("You Are Disconnected...")
+               }
+          }
+          document.querySelector('#message').value = '';
+          document.querySelector('#submit').disabled = true;
+          return false
      }
 });
