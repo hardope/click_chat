@@ -66,8 +66,6 @@ def api(query):
     else:
         if 'id-' in query:
             query = query.replace('id-', '')
-            print(session['messenger'])
-            print(query)
             length = query_db(f"SELECT COUNT(*) FROM messages WHERE sender == '{session['messenger']}' AND recipient == '{query}' OR recipient == '{session['messenger']}' AND sender == '{query}'")
             return length
         messages = query_db(f"SELECT * FROM messages WHERE sender == '{session['messenger']}' AND recipient == '{query}' OR recipient == '{session['messenger']}' AND sender == '{query}'")
