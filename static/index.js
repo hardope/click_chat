@@ -3,7 +3,6 @@ document.addEventListener('DOMContentLoaded', function(){
      var list;
      var newlist;
      let url = window.location.origin
-     console.log(window.location.origin)
 
      let request = new XMLHttpRequest();
      request.open("GET", url + "/api/{{recipient}}");
