@@ -6,36 +6,35 @@
 {% block body %}
 {{error}}
      <form action="/register" method="post">
-          <div class="container py-5 h-50">
-          <div class="row d-flex justify-content-center align-items-center h-50">
-          <div class="col-8 col-md-6 col-lg-5 col-xl-4">
-               <div class="card shadow-2-strong" style="border-radius: 1.5rem;">
-               <div class="card-body p-5 text-center">
-     
-                    <h3 class="mb-5">Create Account</h3>
-     
-                    <div class="form-outline mb-4">
-                    <input type="text" name="username" class="form-control form-control-lg" />
-                    <label class="form-label" for="typeEmailX-2">Username</label>
-                    </div>
-     
-                    <div class="form-outline mb-4">
-                    <input type="password" name="password" class="form-control form-control-lg" />
-                    <label class="form-label" for="typePasswordX-2">Password</label>
-                    </div>
 
-                    <div class="form-outline mb-4">
-                    <input type="password" name="confirm" class="form-control form-control-lg" />
-                    <label class="form-label" for="typePasswordX-2">Confirm Password</label>
+          <section class="u-clearfix u-section-1" id="sec-afdb">
+               <div class="u-clearfix u-sheet u-sheet-1">
+               <div class="u-form u-login-control u-form-1">
+                    <div class="u-form-group u-form-name">
+                    <label for="username-c4f9" class="u-label">Username *</label>
+                    <input type="text" name="username" placeholder="Enter your Username" id="username-c4f9" name="username" class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-white" required="">
                     </div>
-     
-                    <input class="btn btn-primary btn-lg btn-block" type="submit" value="Create Account">
-     
+                    <div class="u-form-group u-form-password">
+                    <label for="password-c4f9" class="u-label">Password *</label>
+                    <input type="password" name="password" placeholder="Enter your Password" id="password-c4f9" class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-white" required="">
+                    </div>
+                    <div class="u-form-group u-form-password">
+                         <label for="password-c4f9" class="u-label">Confirm Password *</label>
+                         <input type="password" name="confirm" placeholder="Enter your Password" id="password-c4f9" class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-white" required="">
+                    </div>
+                    <div class="u-form-checkbox u-form-group">
+                    <input type="checkbox" id="checkbox-c4f9" name="remember" value="On">
+                    <label for="checkbox-c4f9" class="u-label">Remember me</label>
+                    </div>
+                    <div class="u-align-center u-form-group u-form-submit">
+                    <a href="/login" data-page-id="98986827" class="u-btn u-btn-submit u-button-style u-btn-1">&nbsp;Create Account<br>
+                    </a>
+                    <input type="submit" value="submit" class="u-form-control-hidden">
+                    </div>
+                    <input type="hidden" value="" name="recaptchaResponse">
+                    <a href="/login">Have an account? Log in</a>
                </div>
                </div>
-          </div>
-          </div>
-          </div>
-          <a href="/login">Have An Account? Log in</a>
+          </section>
      </form>
 {% endblock %}
