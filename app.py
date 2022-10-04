@@ -42,6 +42,7 @@ def chats():
     if not session.get("messenger"):
         return redirect("/login")
     else:
+        a = 0
         users = []
         result = query_db(f"SELECT DISTINCT recipient FROM messages WHERE sender == '{session['messenger']}'")
         results = query_db(f"SELECT DISTINCT sender FROM messages WHERE recipient == '{session['messenger']}'")
@@ -50,6 +51,9 @@ def chats():
         for i in results:
             if i[0] not in users:
                 users.append(i[0])
+                a+=1
+        if a == 0:
+            return redirect("/users")
         return render_template("index.html", username=session['messenger'], users=users, header="Chats")
 
 @app.route("/chat/<query>")
@@ -112,7 +116,7 @@ def register():
 
         query_db(f"INSERT INTO users (id, username, password) VALUES ({int(available_id + 1)}, '{username}', '{password}')")
         session['messenger'] = username
-        return redirect("/")
+        return redirect("/users")
     else:
         return render_template("register.html", error="")
 
