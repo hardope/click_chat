@@ -14,6 +14,7 @@ def news():
     if not session.get("messenger"):
         return redirect("/login")
     return render_template("news.html", username=session['messenger'])
+
 @app.route("/search", methods=["POST"])
 def search():
     if not session.get("messenger"):
@@ -59,7 +60,7 @@ def chats():
         if a < 3:
             return redirect("/users")
         return render_template("index.html", username=session['messenger'], users=users, header="Chats")
-
+  
 @app.route("/chat/<query>")
 def chat(query):
     if not session.get("messenger"):
