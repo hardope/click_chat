@@ -48,10 +48,21 @@ def chats():
     else:
         a = 0
         users = []
+        values = []
         result = query_db(f"SELECT DISTINCT recipient FROM messages WHERE sender == '{session['messenger']}'")
         results = query_db(f"SELECT DISTINCT sender FROM messages WHERE recipient == '{session['messenger']}'")
         for i in result:
             users.append(i[0])
+            length = query_db(f"SELECT COUNT (*) FROM messages WHERE sender == '{session['messenger']}' AND recipient == '{i[0]}' OR recipient == '{session['messenger']}' AND sender == '{i[0]}'")[0][0]
+            try:
+                comp = query_db(f"SELECT id FROM read WHERE sender == '{session['messenger']}' AND recipient == '{i[0]}'")[0][0]
+            except:
+                comp = 0
+            if length > comp:
+                values.append(f"{length - comp}")
+            else:
+                values.append("..")
+            print(f"New: {length} | old: {comp}")
             a+=1
         for i in results:
             if i[0] not in users:
@@ -59,7 +70,7 @@ def chats():
                 a+=1
         if a < 3:
             return redirect("/users")
-        return render_template("index.html", username=session['messenger'], users=users, header="Chats")
+        return render_template("index.html", username=session['messenger'], users=users, header="Chats", values=values)
   
 @app.route("/chat/<query>")
 def chat(query):
@@ -73,11 +84,14 @@ def api(query):
     if not session.get("messenger"):
         return redirect("/login")
     else:
-        if 'id-' in query:
-            query = query.replace('id-', '')
-            length = query_db(f"SELECT COUNT(*) FROM messages WHERE sender == '{session['messenger']}' AND recipient == '{query}' OR recipient == '{session['messenger']}' AND sender == '{query}'")
-            return length
+        length = query_db(f"SELECT COUNT (*) FROM messages WHERE sender == '{session['messenger']}' AND recipient == '{query}' OR recipient == '{session['messenger']}' AND sender == '{query}'")
         messages = query_db(f"SELECT * FROM messages WHERE sender == '{session['messenger']}' AND recipient == '{query}' OR recipient == '{session['messenger']}' AND sender == '{query}'")
+        length = length[0][0]
+        check = query_db(f"SELECT id FROM read WHERE sender == '{session['messenger']}' AND recipient == '{query}'")
+        if len(check) > 0:
+            query_db(f"UPDATE read SET id = {length} WHERE sender == '{session['messenger']}' AND recipient == '{query}'")
+        else:
+            query_db(f"INSERT INTO read VALUES({length}, '{session['messenger']}', '{query}')")
         return jsonify(messages)
 
 @app.route("/login", methods=["GET", "POST"])
