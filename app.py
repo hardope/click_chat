@@ -9,14 +9,17 @@ app.config["SESSION_TYPE"] = "filesystem"
 Session(app)
 app.secret_key = "Messenger"
 
-@app.route("/search")
+@app.route("/news")
+def news():
+    if not session.get("messenger"):
+        return redirect("/login")
+    return render_template("news.html", username=session['messenger'])
+@app.route("/search", methods=["POST"])
 def search():
     if not session.get("messenger"):
         return redirect("/login")
     else:
         search = request.form.get("search")
-        print(search)
-
         users = []
         result = query_db(f"SELECT * FROM users WHERE username LIKE '%{search}%'")
         for i in result:
@@ -48,11 +51,12 @@ def chats():
         results = query_db(f"SELECT DISTINCT sender FROM messages WHERE recipient == '{session['messenger']}'")
         for i in result:
             users.append(i[0])
+            a+=1
         for i in results:
             if i[0] not in users:
                 users.append(i[0])
                 a+=1
-        if a == 0:
+        if a < 3:
             return redirect("/users")
         return render_template("index.html", username=session['messenger'], users=users, header="Chats")
 
