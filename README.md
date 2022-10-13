@@ -4,4 +4,6 @@
 * Multiple Users
 * Awesome UI
 
-Link to website: hardope.pythonanywhere.com
+This app runs of Flask framework.
+Flask app not present in repository for personal reasons.
+[Link to website](htpps://hardope.pythonanywhere.com)
