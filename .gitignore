@@ -1,1 +1,3 @@
 app.py
+__pycache__
+flask_session
