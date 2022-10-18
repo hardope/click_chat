@@ -1,4 +1,5 @@
-# Web Based Messaging Application
+# Click Chat
+Instant messaging web app
 ### Features
 * Instant Messaging: Refreshes Every Second
 * Multiple Users
