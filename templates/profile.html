@@ -17,8 +17,13 @@
         {% endif %}
     </center>
     
-
-    <form action="/chat/{{user}}">
-        <button  type="submit" id='button' class="btn btn-outline-light" data-mdb-ripple-color="dark" style="text-size: 40px; color: black; border: 0ch; margin-bottom: 2%; margin-left: 45%; border-radius: 10px 10px 10px 10px;  width: 150px; height: 30px;">Message</button>
-    </form>
+    {% if username == user %}
+        <form action="/me/{{user}}">
+            <button  type="submit" id='button' class="btn btn-outline-light" data-mdb-ripple-color="dark" style="text-size: 40px; color: black; border: 0ch; margin-bottom: 2%; margin-left: 45%; border-radius: 10px 10px 10px 10px;  width: 150px; height: 30px;">Edit Profile</button>
+        </form>
+    {% else %}
+        <form action="/chat/{{user}}">
+            <button  type="submit" id='button' class="btn btn-outline-light" data-mdb-ripple-color="dark" style="text-size: 40px; color: black; border: 0ch; margin-bottom: 2%; margin-left: 45%; border-radius: 10px 10px 10px 10px;  width: 150px; height: 30px;">Message</button>
+        </form>
+    {% endif %}
 {% endblock %}
