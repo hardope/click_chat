@@ -1,5 +1,4 @@
-# Click Chat
-Instant messaging web app
+# Web Based Messaging Application
 ### Features
 * Instant Messaging: Refreshes Every Second
 * Multiple Users
@@ -7,6 +6,5 @@ Instant messaging web app
 * Unread messages Notification dot
 
 This app runs of Flask framework.
-Flask app not present in repository for personal reasons.<br>
-App also uses a database which is also absent for security reasons.
+Flask app not present in repository for personal reasons.
 <br>[Link to website](https://hardope.pythonanywhere.com)
