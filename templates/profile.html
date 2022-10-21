@@ -7,23 +7,24 @@
     <center>
         <img src="/static/favicon.ico" style="border-radius: 50%; width:10%">
         {% if data == [] %}
-            <h4>{{user}}</h4>
+            <h1>{{user}}</h1>
             <p>No Information</p>
         {% else %}
-            <h4>Username: {{data[0][1]}}</h4>
             <h4>{{data[0][0]}}</h4>
-            <h5>About {{data[0][1]}}</h5>
-            <p>{{data[0][3]}}</p>
+            <p>{{data[0][1]}}</p>
+            <h4>About {{data[0][0]}}</h4>
+            <p>{{data[0][2]}}</p>
         {% endif %}
     </center>
-    
+
     {% if username == user %}
         <form action="/me/{{user}}">
-            <button  type="submit" id='button' class="btn btn-outline-light" data-mdb-ripple-color="dark" style="text-size: 40px; color: black; border: 0ch; margin-bottom: 2%; margin-left: 45%; border-radius: 10px 10px 10px 10px;  width: 150px; height: 30px;">Edit Profile</button>
+            <button  type="submit" id='button' class="btn btn-outline-light" data-mdb-ripple-color="dark" style="text-size: 60px; color: black; border: 0ch; margin-bottom: 2%; margin-left: 35%; border-radius: 10px 10px 10px 10px;  width: 200px; height: 50px;">Edit Profile</button>
         </form>
     {% else %}
         <form action="/chat/{{user}}">
-            <button  type="submit" id='button' class="btn btn-outline-light" data-mdb-ripple-color="dark" style="text-size: 40px; color: black; border: 0ch; margin-bottom: 2%; margin-left: 45%; border-radius: 10px 10px 10px 10px;  width: 150px; height: 30px;">Message</button>
+            <button  type="submit" id='button' class="btn btn-outline-light" data-mdb-ripple-color="dark" style="text-size: 60px; color: black; border: 0ch; margin-bottom: 2%; margin-left: 35%; border-radius: 10px 10px 10px 10px;  width: 200px; height: 50px;">Message</button>
         </form>
     {% endif %}
+{% endblock %}
 {% endblock %}
