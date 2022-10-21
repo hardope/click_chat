@@ -1,7 +1,13 @@
 <!DOCTYPE html>
+
+<style>
+html *
+{
+   font-size: 20px !important
+}
+</style>
 <html style="font-size: 16px;" lang="en"><head>
     <link rel="icon" href="/static/icon.jpg" media="screen">
-  <link rel="icon" type="image/png" href="icon.png" width="40">
     <meta name="viewport" content="width=device-width, initial-scale=0.5">
     <meta charset="utf-8">
     <meta name="keywords" content="">
@@ -49,7 +55,9 @@
                 <ul class="u-align-center u-nav u-popupmenu-items u-unstyled u-nav-2">
     <li class="u-nav-item"><a class="u-button-style u-nav-link" href="/">Chats</a>
 </li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="/users">New Chat</a>
-</li><li  class="u-nav-item"><a class="u-button-style u-nav-link" href="/news">Announcements</a></li></ul>
+</li><li  class="u-nav-item"><a class="u-button-style u-nav-link" href="/news">Announcements</a></li>
+<li  class="u-nav-item"><a class="u-button-style u-nav-link" href="/about">About</a></li>
+<li  class="u-nav-item"><a class="u-button-style u-nav-link" href="/profile/{{username}}">Profile</a></li></ul>
               </div>
             </div>
             <div class="u-black u-menu-overlay u-opacity u-opacity-70"></div>
@@ -64,7 +72,6 @@
           <input class="u-search-input" type="search" name="search" value="" placeholder="Search">
         </form>
         </nav>
-        <h5 class="u-text u-text-default u-text-1">Logged In as {{ username }}</h5>
       </div></header>
 
         {% block body %}
