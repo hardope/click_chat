@@ -223,26 +223,12 @@ h2 {
                             tag.setAttribute('class', 'from-me margin-b_none')
                             tag.setAttribute('style', 'font-size: 20px;')
                             body.appendChild(tag);
-                            var date = document.createElement('h5');
-                            var ldate = "" + obj[3] + "";
-                            var time = ldate.slice(-8)
-                            time = time.slice(0, 5)
-                            date.textContent = time
-                            date.setAttribute('style', 'font-size: 14px; text-indent: 85%;')
-                            body.appendChild(date);
                     } else {
                             var tag = document.createElement('p');
                             tag.textContent = obj[2];
                             tag.setAttribute('class', 'from-them')
                             tag.setAttribute('style', 'font-size: 20px;')
                             body.appendChild(tag);
-                            var date = document.createElement('h5');
-                            var ldate = "" + obj[3] + "";
-                            var time = ldate.slice(-8)
-                            time = time.slice(0, 5)
-                            date.textContent = time
-                            date.setAttribute('style', 'font-size: 14px; text-indent: 0%;')
-                            body.appendChild(date);
                     }
                 }
                 window.scrollTo(0, 10000);
@@ -265,13 +251,6 @@ h2 {
                                 tag.setAttribute('class', 'from-me')
                                 tag.setAttribute('style', 'font-size: 20px;')
                                 body.appendChild(tag);
-                                var date = document.createElement('h5');
-                                var ldate = "" + newlist[i+1][3] + "";
-                                var time = ldate.slice(-8)
-                                time = time.slice(0, 5)
-                                date.textContent = time
-                                date.setAttribute('style', 'font-size: 14px; text-indent: 85%;')
-                                body.appendChild(date);
                             } else{
                                 var tag = document.createElement('p');
                                 tag.textContent = newlist[i+1][2];
@@ -279,13 +258,6 @@ h2 {
                                 tag.setAttribute('class', 'from-them')
                                 tag.setAttribute('style', 'font-size: 20px;')
                                 body.appendChild(tag);
-                                var date = document.createElement('h5');
-                                var ldate = "" + newlist[i+1][3] + "";
-                                var time = ldate.slice(-8)
-                                time = time.slice(0, 5)
-                                date.textContent = time
-                                date.setAttribute('style', 'font-size: 14px; text-indent: 0%;')
-                                body.appendChild(date);
                             }
                         }
                         list = newlist;

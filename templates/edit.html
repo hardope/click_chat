@@ -5,9 +5,13 @@
 
 {% block body %}
     <center>
-        <img src="/static/favicon.ico" style="border-radius: 50%; width:10%">
+          {% if img == 0 %}
+               <img src="/static/favicon.ico" style="border-radius: 50%; width:10%">
+          {% else %}
+               <img src="/static/{{pic}}" style="border-radius: 50%; width:30%">
+          {% endif %}
     </center>
-        <form action = "/me/{{username}}" method = "post">
+        <form action = "/me/{{username}}" method = "post" enctype="multipart/form-data">
             <center>
                 About
                     <textarea class="btn btn-outline-light" name="about" maxlength="100" style="width:500px; height: 200px;">
@@ -31,6 +35,7 @@
                 <input type="radio" id="female" name="gender" value="Female" style="margin-left: 10%;">
                 <label for="female">Female</label><br>
             {% endif %}
+               <input class="btn btn-outline-light" type="file" id="pic" name="pic" accept="image/*" value="">
         <center>
             <button  type="submit" id='button' class="btn btn-outline-light" data-mdb-ripple-color="dark" style="text-size: 60px; color: black; border: 0ch; margin-bottom: 2%; margin-left: 10%; border-radius: 10px 10px 10px 10px;  width: 200px; height: 50px;">Update Profile</button>
         </center>
