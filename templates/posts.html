@@ -5,6 +5,7 @@
 {% block body %}
 <script>
      document.addEventListener('DOMContentLoaded', function(){
+          let a = 1
           let url = window.location.origin
           let request = new XMLHttpRequest();
           let body = document.querySelector('#body');
@@ -22,15 +23,22 @@
                          tag.textContent = obj[2];
                          tag.setAttribute('class', 'div')
                          body.appendChild(tag);
+                         a+=1
                     }
                }
+          }
+          if (a < 1){
+               var tag = document.createElement('h2');
+               tag.textContent = "No Posts Currently";
+               tag.setAttribute('style', 'text-allign: center;')
+               body.appendChild(tag);
           }
      });
 </script>
 <style>
      html {
-  scroll-behavior: smooth;
-}
+          scroll-behavior: smooth;
+     }
      a{
           margin-left: 55px;
      }
@@ -38,15 +46,22 @@
           display: block;
           background-color: rgb(27, 153, 207);
           width: 300px;
-          height: 100px;
+          height: auto;
+          min-height: 50px;
           margin-left: 50px;
           margin-bottom: 30px;
           border-radius: 20px;
+          padding: 10px 10px 10px 10px;
           text-align: center;
           font-size: 20px;
           word-wrap: break-word;
      }
  </style>
+ <div>
+     <form action="/posts/new">
+          <button type="submit" style="border-radius: 10px; margin-left: 20%; height: 40px; border-color: rgb(224, 227, 229);">Create New Post</button>
+     </form>
+ </div>
     <div id="body">
 
     </div>
