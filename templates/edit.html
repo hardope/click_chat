@@ -10,6 +10,8 @@
           {% else %}
                <img src="/static/{{pic}}" style="border-radius: 50%; width:30%">
           {% endif %}
+          <br>
+          <br>
     </center>
         <form action = "/me/{{username}}" method = "post" enctype="multipart/form-data">
             <center>
@@ -40,4 +42,8 @@
             <button  type="submit" id='button' class="btn btn-outline-light" data-mdb-ripple-color="dark" style="text-size: 60px; color: black; border: 0ch; margin-bottom: 2%; margin-left: 10%; border-radius: 10px 10px 10px 10px;  width: 200px; height: 50px;">Update Profile</button>
         </center>
       </form>
+        <center>
+            <a href="/change_username"><button  type="submit" id='button' class="btn btn-outline-light" data-mdb-ripple-color="dark" style="text-size: 60px; color: black; border: 0ch; margin-bottom: 2%; margin-left: 10%; border-radius: 10px 10px 10px 10px;  width: 200px; height: 50px;">Change Username</button></a>
+            <a href="/ch_password"><button  type="submit" id='button' class="btn btn-outline-light" data-mdb-ripple-color="dark" style="text-size: 60px; color: black; border: 0ch; margin-bottom: 2%; margin-left: 10%; border-radius: 10px 10px 10px 10px;  width: 200px; height: 50px;">Change Password</button></a>
+        </center>
 {% endblock %}
