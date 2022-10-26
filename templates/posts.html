@@ -46,6 +46,9 @@
 <style>
      .container{
           display: flex;
+          width: vw-40;
+          margin-left: 20px;
+          margin-right: 20px;
      }
      html {
           scroll-behavior: smooth;
@@ -56,10 +59,12 @@
      .div{
           display: block;
           background-color: rgb(212, 214, 215);
-          width: 400px;
+          width: vw - 40;
           height: auto;
           min-height: 50px;
-          margin-left: 50px;
+          margin-left: 20px;
+          margin-right: 20px;
+          max-width: 700px;
           border-top-right-radius: 20px;
           border-top-left-radius: 20px;
           padding: 10px 10px 10px 10px;
@@ -67,14 +72,11 @@
           font-size: 20px;
           word-wrap: break-word;
      }
-     .react .comment{
-          display: inline;
-     }
      .react{
-          margin-left: 185px;
           margin-bottom: 30px;
-          width: 195px;
           height: 50px;
+          width: 46vw;
+          max-width: 345px;
           padding: 5px 5px 5px 5px;
           text-align: center;
           display: block;
@@ -82,11 +84,11 @@
           border-bottom-left-radius: 20px;
      }
      .comment{
-          align-self: center;
           margin-left: 10px;
           margin-bottom: 30px;
-          width: 195px;
           height: 50px;
+          width: 46vw;
+          max-width: 345px;
           padding: 5px 5px 5px 5px;
           text-align: center;
           display: block;
@@ -99,9 +101,7 @@
           <button type="submit" style="border-radius: 10px; margin-left: 20%; height: 40px; border-color: rgb(224, 227, 229);">Create New Post</button>
      </form>
  </div>
-<center>
-    <div id="body" style="font-size: 40px !important;">
+<div id="body" style="font-size: 40px !important;">
 
-    </div>
-</center>
+</div>
 {% endblock %}
