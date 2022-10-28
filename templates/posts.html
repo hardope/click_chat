@@ -16,6 +16,7 @@
                     let body = document.querySelector('#body');
                     for (let obj of JSON.parse(request.response)) {
                          var name = document.createElement('a');
+                         name.setAttribute('class', 'a')
                          name.textContent = obj[1];
                          name.setAttribute('href', "/profile/" + obj[1])
                          body.appendChild(name)
@@ -30,11 +31,14 @@
                          react.setAttribute('style', 'inline')
                          react.textContent = '❤️';
                          container.appendChild(react)
+                         var link = document.createElement('a')
+                         link.setAttribute('href', '/comment/' + obj[0])
                          var comment = document.createElement('p')
                          comment.setAttribute('class', 'comment')
                          comment.setAttribute('style', 'inline')
                          comment.textContent = 'Comments';
-                         container.appendChild(comment)
+                         link.appendChild(comment)
+                         container.appendChild(link)
                          body.appendChild(container)
 
                          a+=1
@@ -53,7 +57,7 @@
      html {
           scroll-behavior: smooth;
      }
-     a{
+     .a{
           margin-left: 55px;
      }
      .div{
