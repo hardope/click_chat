@@ -4,7 +4,11 @@
       <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
 {% block body %}
-<h1 style="text-align: center; color: red;">{{error}}</h1>
+{% if error != "" %}
+    <center><p style="width: 500px; height: 40px; border: solid; border-thickness: 0.5px; border-color: rgb(27, 153, 207); border-radius: 15px; text-allign: center; background-color: rgb(189, 189, 189)">{{error}}</p></center>
+{% else %}
+    {{error}}
+{% endif %}
      <center>
           <h1>Changing Your Username Will Change Your Login Details</h1>
           <h1>Are You sure</h1>

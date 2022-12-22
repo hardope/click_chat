@@ -16,9 +16,7 @@
         <form action = "/me/{{username}}" method = "post" enctype="multipart/form-data">
             <center>
                 About
-                    <textarea class="btn btn-outline-light" name="about" maxlength="100" style="width:500px; height: 200px; border-radius: 20px;">
-                        {{about}}
-                    </textarea>
+                    <textarea class="btn btn-outline-light" required name="about" maxlength="100" style="width:500px; height: 200px; border-radius: 20px;">{{about}}</textarea>
             </center>
             {% if gender == 0 %}
                 <input type="radio" id="male" name="gender" value="male" checked='checked' style="margin-left: 10%;">
