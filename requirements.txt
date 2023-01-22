@@ -3,6 +3,6 @@ requests
 flask_session
 flask
 messenger.db
-*.jpg
-*.jpeg
-*.png
+/static/*.jpg
+/static/*.jpeg
+/static/*.png
