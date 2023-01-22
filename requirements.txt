@@ -2,3 +2,7 @@ sqlite3
 requests
 flask_session
 flask
+messenger.db
+*.jpg
+*.jpeg
+*.png
