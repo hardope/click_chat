@@ -2,7 +2,3 @@ sqlite3
 requests
 flask_session
 flask
-messenger.db
-static/*.jpg
-/static/*.jpeg
-/static/*.png

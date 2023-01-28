@@ -1,12 +1,8 @@
 # Click Chat
-
-Social Media Platform & Instant Messenger
-
+Instant messaging web app
 ### Features
-
-* Creating Posts
-* Like Posts
 * Instant Messaging: Refreshes Every Second
+* Multiple Users
 * Awesome UI
 * Unread messages Notification dot
 
