@@ -1,5 +1,11 @@
 # Click Chat
-Instant messaging web app
+
+Instant messaging web app<br>
+
+[Link to website](https://hardope.pythonanywhere.com)
+
+---
+
 ### Features
 * Instant Messaging: Refreshes Every Second
 * Multiple Users
