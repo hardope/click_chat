@@ -6,6 +6,8 @@ Instant messaging web app<br>
 
 ---
 
+## Design & Development
+
 ### Features
 * Instant Messaging: Refreshes Every Second
 * Multiple Users
