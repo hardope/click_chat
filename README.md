@@ -8,6 +8,8 @@ Instant messaging web app<br>
 
 ## Design & Development
 
+Design and development of a full scale social media patform Using Python flask web framework.<br>
+
 ### Features
 * Instant Messaging: Refreshes Every Second
 * Multiple Users
