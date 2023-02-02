@@ -10,6 +10,8 @@ Instant messaging web app<br>
 
 Design and development of a full scale social media patform Using Python flask web framework.<br>
 
+This web app enables users to create text and picture posts also each post can be liked and unliked same with each comment. The comment section is multi layered as each comment can can aslo have a comment.<br>
+
 ### Features
 * Instant Messaging: Refreshes Every Second
 * Multiple Users
