@@ -1,8 +1,8 @@
 # Click Chat
 
-Instant messaging web app<br>
+Social Media Platform & Instant Messaging Web Application<br>
 
-[Link to website](https://hardope.pythonanywhere.com)
+<br>[Link to website](https://hardope.pythonanywhere.com)
 
 ---
 
@@ -14,14 +14,18 @@ This web app enables users to create text and picture posts also each post can b
 
 Each user has a username and password, and after account creation, each user can upload a profile picture and give details about themselves like their sex and bio.<br>
 
+The instant messenger refreshes every second transfering messages among users at the speed of light. The messaging page uses chat bubbles to display messages and submit new messages to server.
+
+---
 
 ### Features
+* Creating posts with support for pictues
 * Instant Messaging: Refreshes Every Second
-* Multiple Users
-* Awesome UI
+* Liking and unliking posts
+* Multi Layered comments with support for pictures
+* Liking and unliking comments
+* Awesome User Interface and Experience
 * Unread messages Notification dot
 
-This app runs of Flask framework.
 Flask app not present in repository for personal reasons.<br>
 This Web App also uses a database which is also absent for security reasons.
-<br>[Link to website](https://hardope.pythonanywhere.com)
