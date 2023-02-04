@@ -1,8 +1,10 @@
+<img src="https://hardope.pythonanywhere.com/static/icon.png" width=60 style="border-radius: 25px">
+
 # Click Chat
 
 Social Media Platform & Instant Messaging Web Application<br>
 
-<br>[Link to website](https://hardope.pythonanywhere.com)
+[Link to website](https://hardope.pythonanywhere.com)
 
 ---
 
