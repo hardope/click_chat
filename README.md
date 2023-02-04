@@ -1,4 +1,4 @@
-<img src="https://hardope.pythonanywhere.com/static/icon.png" width=60 style="border-radius: 25px">
+<center><img src="https://hardope.pythonanywhere.com/static/icon.png" width=60 style="border-radius: 25px"></center>
 
 # Click Chat
 
