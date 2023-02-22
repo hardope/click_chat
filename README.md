@@ -23,9 +23,9 @@ The instant messenger refreshes every second transfering messages among users at
 ### Features
 * Creating posts with support for pictues
 * Instant Messaging: Refreshes Every Second
-* Liking and unliking posts
+* Likeand  & unlike posts
 * Multi Layered comments with support for pictures
-* Liking and unliking comments
+* Like and unlike comments
 * Awesome User Interface and Experience
 * Unread messages Notification dot
 
