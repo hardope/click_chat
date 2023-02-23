@@ -3,3 +3,4 @@ __pycache__
 flask_session
 messenger.db
 operations.py
+/static/chat.js
