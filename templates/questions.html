@@ -1,0 +1,30 @@
+{% extends "layout2.html" %}
+
+{% block body %}
+{% if error != "" %}
+    <center><p style="width: 500px; height: 50px; border-radius: 15px; text-align: center; background-color: rgba(255, 134, 134, 0.9); word-wrap: break-word;">{{error}}</p></center>
+{% endif %}
+     <center><b>Answer This Questions To Reset Your Password</b></center>
+     <form action="/forgot_password" method="post">
+          <center>
+               <center>
+                    <b>{{question1}}</b>
+               </center>
+               <h2>Answer</h2>
+               <textarea name="a0" maxlength="1000" required style="padding: 10px; width:500px; height: 100px; border-radius: 10px; margin-bottom: 5px;"></textarea>
+               <center>
+                    <b>{{question2}}</b>
+               </center>
+               <h2>Answer</h2>
+               <textarea name="a1" maxlength="1000" required style="padding: 10px; width:500px; height: 100px; border-radius: 10px; margin-bottom: 5px;"></textarea>
+               <center>
+                    <b>{{question3}}</b>
+               </center>
+               <h2>Answer</h2>
+               <textarea name="a2" maxlength="1000" required style="padding: 10px; width:500px; height: 100px; border-radius: 10px; margin-bottom: 5px;"></textarea>
+          </center>
+          <center>
+               <button  type="submit" id='button' style="font-size: 60px; color: black; border: 0ch; margin-bottom: 2%; border-radius: 10px 10px 10px 10px;  width: 200px; height: 50px;">Answer</button>
+          </center>
+     </form>
+{% endblock %}
