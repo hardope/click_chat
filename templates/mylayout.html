@@ -1,61 +1,16 @@
 <!DOCTYPE html>
-<html lang="en" style="font-size: 16px;">
-<link rel="stylesheet" href="/static/nicepage.css">
+<html lang="en">
 <head>
-     <script>
-          function openNav() {
-               document.getElementById("mySidebar").style.height = "500px";
-          }
-        
-          /* Set the width of the sidebar to 0 and the left margin of the page content to 0 */
-          function closeNav() {
-               document.getElementById("mySidebar").style.height = "0";
-               document.getElementById("mysidebar").style.paddingtop = "0px";
-          }
-          function up(){
-               window.scrollTo(0, 0);
-          }
-     </script>
-     <link rel="icon" href="/static/icon.jpg">
      <meta charset="UTF-8">
-     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <meta name="keywords" content="chat, Social Media, messenger, Instant Messenger">
-     <meta property="title" content="Click Chat">
-     <meta property="image" content="/static/icon.png">
-     <meta property="description" content="Social Media Platform Developed and Designed By Opeoluwa Adeyeri">
      <meta http-equiv="X-UA-Compatible" content="IE=edge">
-     <meta name="theme-color" content="#478ac9">
-     <meta property="og:title" content="Click Chat">
-     <meta property="og:type" content="website">
-     <meta property="og:image" content="/static/icon.png">
-     <meta property="og:description" content="Social Media Platform Developed and Designed By Opeoluwa Adeyeri">
+     <meta name="viewport" content="width=device-width, initial-scale=0.5">
      <title>Click Chat</title>
+     <link rel="stylesheet" href="/static/mylayout.css">
 </head>
 <body>
-     <div id="mySidebar" class="sidebar" style="position: absolute;">
-          <ul>
-               <a class="closebtn" onclick="closeNav()">&#x2715;</a>
-               <a class="u-button-style u-nav-link" href="/">Home</a>
-               <a class="u-button-style u-nav-link" href="/chats">Chats</a>
-               <a class="u-button-style u-nav-link" href="/users">New Chat</a>
-               <a class="u-button-style u-nav-link" href="/news">Announcements</a></li>
-               <a class="u-button-style u-nav-link" href="/about">About</a></li>
-               <a class="u-button-style u-nav-link" href="/profile/{{username}}">Profile</a>
-          </ul>
+     <div id="head">
+          <img id="logo" alt="Click Chat Logo" src="/static/icon.png">
      </div>
-     <div class="head">
-          <div class="line1">
-               <a href="/">
-                    <img src="/static/icon.png"  class="logo">
-               </a>
-               <form action="/search" method="post" class="u-border-1 u-border-grey-30 u-search u-search-left u-white u-search-1">
-                    <input class="search" type="text" name="search" value="" placeholder="&#x1F50E;&#xFE0E; Search" data-inlin="true">
-               </form>
-               <nav class="nav">
-                    <button class="openbtn" onclick="openNav()" >&#9776;</button>
-               </nav>
-          </div>
-          
-     </div>
+     
 </body>
 </html>
