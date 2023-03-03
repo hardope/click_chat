@@ -39,7 +39,7 @@ html {
 }
 .react{
     height: 50px;
-    width: 38vw;
+    width: 33vw;
     align-self: center;
     max-width: 230px;
     text-align: center;
@@ -59,7 +59,7 @@ html {
     border-right: solid;
     border-color: rgb(194, 194, 194);
     border-width: 1px;
-    margin-left: 30px;
+    margin-left: 10px;
 }
 .v_like{
     height: 50px;
@@ -87,8 +87,7 @@ html {
 }
 #close{
     float: right;
-    font-size: 28px;
-    font-weight: bold;
+    font-size: 150px;
 }
 .v_cont{
     height: 60px;
