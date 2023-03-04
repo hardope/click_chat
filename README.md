@@ -12,11 +12,13 @@ Social Media Platform & Instant Messaging Web Application<br>
 
 Design and development of a full scale social media patform Using Python flask web framework.<br>
 
-This web app enables users to create text and picture posts also each post can be liked and unliked same with each comment. The comment section is multi layered as each comment can can aslo have a comment.<br>
+This web app enables users to create text and picture posts and comments which can be liked and unliked. The comment section is multi layered as each comment can can aslo have a comment.<br>
 
 Each user has a username and password, and after account creation, each user can upload a profile picture and give details about themselves like their sex and bio.<br>
 
-The instant messenger refreshes every second transfering messages among users at the speed of light. The messaging page uses chat bubbles to display messages and submit new messages to server.
+The instant messenger refreshes every second transfering messages among users at the speed of light. The messenger sends requests to the server to fetch and send messages.<br>
+
+New message notification achieved by sending requests by the second to the server to confirm if new messages are awaiting the user.
 
 ---
 
