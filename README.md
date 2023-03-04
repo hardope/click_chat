@@ -20,14 +20,25 @@ The instant messenger refreshes every second transfering messages among users at
 
 ---
 
+### Tech Stack Used In development
+* Python Flask
+* SQLite
+* HTML
+* CSS
+* Javascript
+
+---
+
 ### Features
 * Creating posts with support for pictues
 * Instant Messaging: Refreshes Every Second
-* Likeand  & unlike posts
+* Like and & unlike posts
 * Multi Layered comments with support for pictures
 * Like and unlike comments
-* Awesome User Interface and Experience
-* Unread messages Notification dot
+* Average User Interface and Experience (I'm Not very experienced on the front end)
+* Unread Messages Notifications refreshing By the second.
 
+
+### Note:
 Flask app not present in repository for personal reasons.<br>
 This Web App also uses a database which is also absent for security reasons.
