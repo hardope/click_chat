@@ -32,7 +32,7 @@ New message notification achieved by sending requests by the second to the serve
 ---
 
 ### Features
-* Creating posts with support for pictues
+* Creating posts with support for text, Pictures and Videos
 * Instant Messaging: Refreshes Every Second
 * Like and & unlike posts
 * Multi Layered comments with support for pictures
