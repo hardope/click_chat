@@ -1,86 +1,5 @@
 <!DOCTYPE html>
 <link rel="icon" href="/static/icon.png" style="border-radius: 25px" type="image/x-icon">
-<style>
-html *
-{
-   font-size: 20px !important;
-   scroll-behavior: smooth !important;
-}
-
-.sidebar {
-  margin-left: 10px;
-  height: 0%;
-  width: 80%;
-  margin-left: 10px;
-  max-width: 800px;
-  margin-right: 20px;
-  position:inherit; /* Stay in place */
-  z-index: 1; /* Stay on top */
-  top: 0;
-  left: -10;
-  background-color: rgb(255, 255, 255);
-  overflow-x: hidden;
-  padding-top: 0px;
-  transition: 1s;
-  border-radius: 15px;
-}
-.nav_link{
-  width: 100%;
-  height: 60px;
-  padding: 20px;
-  border-bottom: solid;
-  border-color: rgb(172, 172, 172);
-  border-width: 1px;
-}
-
-a:link { text-decoration: none; color: rgb(27, 153, 207); !important}
-a:visited { text-decoration: none; color: rgb(27, 153, 207); !important}
-a:active { text-decoration: none; color: rgb(27, 153, 207); !important}
-/* The sidebar links */
-.sidebar a {
-  padding: 8px 8px 8px 32px;
-  text-decoration: none;
-  font-size: 25px;
-  display: block;
-  transition: 0.3s;
-}
-
-/* When you mouse over the navigation links, change their color */
-.sidebar a:hover {
-  color: #f1f1f1;
-}
-
-/* Position and style the close button (top right corner) */
-.sidebar .closebtn {
-  position: absolute;
-  top: 0;
-  right: 25px;
-  font-size: 300x;
-  margin-left: 0px;
-}
-
-/* The button used to open the sidebar */
-.openbtn {
-  position:sticky;
-  font-size: 30px;
-  cursor: pointer;
-  background-color: white;
-  color: #111;
-  padding: 10px 15px;
-  border: none;
-}
-
-.openbtn:hover {
-  background-color: rgb(234, 234, 234);
-}
-footer {
-  position: fixed;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-}
-
-</style>
 <script src="/static/notify.js"></script>
 <div id="notify">
   <div>
@@ -123,6 +42,7 @@ document.addEventListener('click', closeNav())
 <html style="font-size: 16px;" lang="en">
     <head>
     <link rel="stylesheet" href="/static/notify.css">
+    <link rel="stylesheet" href="/static/nav_bar.css">
     <link rel="stylesheet" href="/static/posts.css">
     <script src="/static/notify.js"></script>
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -189,12 +109,14 @@ document.addEventListener('click', closeNav())
         <div id="mySidebar" class="sidebar" style="position: absolute;">
           <br>
           <br>
-          <a style="font-size: 300%" class="closebtn" onclick="closeNav()">&#x2715;</a>
-          <a href="/" class="nav_link">Home</a>
-          <a href="/chats" class="nav_link"><img src="/static/chat.png" style="width: 50px; border-radius: 25px;"> Chats</a>
-          <a href="/users" class="nav_link"><img src="/static/new.png" style="width: 55px; border-radius: 25px;"> New Chat</a>
-          <a href="/profile/{{username}}" class="nav_link"><img src="/static/profile.png" style="width: 55px; border-radius: 25px;"> Profile</a>
-          <a href="/logout" class="nav_link">Logout</a>
+          <a href="javascript:void(0)" style="font-size: 300%" class="closebtn" onclick="closeNav()">&#x2715;</a>
+          <div class="nav_link"><a href="/">Home</a></div>
+          <div class="nav_link"><a href="/chats">Chats</a></div>
+          <div class="nav_link"><a href="/users">New Chat</a></div>
+          <div class="nav_link"><a href="/about">About</a></div>
+          <div class="nav_link"><a href="/profile/{{username}}">Profile</a></div>
+          <div class="nav_link"><a href="/logout">Logout</a></div>
+          <div class="nav_link"><a href="/static/ClickChat.apk">Download Mobile App</a></div>
         </div>
       </div></header>
         </div>
