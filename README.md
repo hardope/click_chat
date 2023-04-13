@@ -43,4 +43,4 @@ New message notification achieved by sending requests by the second to the serve
 
 ### Note:
 Flask app not present in repository for personal reasons.<br>
-This Web App also uses a database which is also absent for security reasons.
+This Web App also ustilizes a database which is also absent for security reasons.
