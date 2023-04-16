@@ -8,6 +8,14 @@ Social Media Platform & Instant Messaging Web Application<br>
 
 ---
 
+I'm Currently Developing an Updated Version Using Python Django FrameWork
+
+Repo at [ClickViral](https://github.com/hardope/viral)
+
+Prototype (Under Development) at [ClickViral](https://clickviral.pythonanywhere.com)
+
+---
+
 ## Design & Development
 
 Design and development of a full scale social media patform Using Python flask web framework.<br>
